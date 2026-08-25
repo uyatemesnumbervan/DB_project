@@ -1,2 +1,4 @@
 .idea/ 
-.venv/ 
+.venv/
+MY_DB/*.db-shm
+MY_DB/*.db-wal

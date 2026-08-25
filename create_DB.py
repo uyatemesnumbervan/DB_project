@@ -1,8 +1,12 @@
 import sqlite3, random
 from faker import Faker
-
+from pathlib import Path
 fake = Faker()
-db = sqlite3.connect("shop.db")
+
+DB_DIR = Path(__file__).resolve().parent / "MY_DB"
+DB_DIR.mkdir(exist_ok=True)
+
+db = sqlite3.connect(DB_DIR / "MY_DB.db")
 cur = db.cursor()
 
 cur.executescript("""
@@ -88,6 +92,4 @@ for start in range(1, 500_001, 10_000):
     db.commit()
 
 db.close()
-
-
 print("Done!")
